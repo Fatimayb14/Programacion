@@ -1,0 +1,100 @@
+package MisClases;
+
+import java.util.Scanner;
+
+public class Juegos {
+
+		final private int numFilas=6;
+		final private int numColumnas=7;
+		
+		private int turno=1;
+		private int numCasillasVacias;
+		
+	private char [][] tablero; 
+		
+		
+		
+		
+		// Constructor 
+	
+		Juegos() {
+			tablero=new char[numFilas][numColumnas];
+			
+		}
+			
+
+		
+		void vaciarTablero() {
+			for(int i=0;i<numFilas;i++) {
+				for(int j=0;j<numColumnas;j++) {
+					tablero [i][j]=' ';
+				}
+		}
+		
+		numCasillasVacias=numFilas*numColumnas; 
+}
+	void pintarTablero() {
+		
+		for(int i=0;i<numFilas;i++)
+			for(int j=0;j<numColumnas;j++) {
+				System.out.print(" " + tablero [i][j]+"");
+	}
+		System.out.println(" "); // Para que haga un salto de línea 
+	
+	
+}
+	boolean introducirFicha() {
+		if(numCasillasVacias==0)
+			return false;
+		
+		Scanner teclado=new Scanner(System.in);
+		
+		boolean opcionValida=false;
+		while(opcionValida==false);
+		System.out.print("introduce el número de colummna :");
+		teclado.nextInt();
+		int columna=teclado.nextInt();
+		// 	Comporbamos que la columna que ha elegido el usuario está en los límites del tablero
+		if(columna>=0 && columna < numColumnas) {
+			 
+			//Recorremos las posiciones de la tabla para esa columna de abajo a arriba 
+			for (int i=numFilas-1; i>=0 ; i--) {
+				tablero[i][columna]=(' '){
+					//Hemos encontrado posición vacía 
+					opcionValida=true; // Para salirnos del bucle while
+					
+					if(turno==1)
+						tablero[i] [columna]='X';
+					else tablero[i][columna]='O';
+					
+					break; // Me salgo del bucle for 
+				}
+						
+			}
+			
+		}
+		return true ;
+	
+			}
+	void partida() {
+		
+		// Vaciamos el tablero
+		 vaciarTablero();
+		 
+		 // Pintamos el tablero para ver su estado 
+		 pintarTablero();
+		 
+		 while (introducir)Ficha()==true) {
+			 //chequeamos si hay ganador 
+			 
+			 // Cambiamos el turno del jugador 
+			 if(turno==1)
+				 turno=1;
+			else turno=1;
+			 
+			 pintarTablero();
+			 
+		 }
+	}
+	
+}
